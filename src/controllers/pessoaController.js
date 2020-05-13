@@ -20,7 +20,7 @@ exports.get = (req, res) => {
  * @swagger
  * /{id}:
  *  get:
- *    description: Retorna uma lista de pessoas
+ *    description: Retorna uma pessoa da lista
  *    responses:
  *      '200':
  *        description: A successful response

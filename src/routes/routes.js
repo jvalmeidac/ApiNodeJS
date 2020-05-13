@@ -1,12 +1,12 @@
 const express = require('express');
-const pessoaDB = require('../data/PessoasDB.json')
 const controller = require('../controllers/pessoaController')
 
-const router = (app) => {
-    app.get('/', controller.get);
-    app.post('/', controller.post);
-    //app.get('/:pessoaID', controller.getID);
-    app.delete('/:pessoaID', controller.delete);
-    app.put('/:pessoaID', controller.put);
-}
+const router = express.Router();
+
+router.get('/', controller.get);
+router.post('/', controller.post);
+router.get('/:pessoaID', controller.getID);
+router.delete('/:pessoaID', controller.delete);
+router.put('/:pessoaID', controller.put);
+
 module.exports = router;

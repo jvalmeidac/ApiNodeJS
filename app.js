@@ -11,8 +11,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 const port = process.env.PORT || 3333;
 
-routes(app);
-
 const swaggerOptions = {
     swaggerDefinition: {
       info: {
@@ -25,12 +23,13 @@ const swaggerOptions = {
       }
     },
     // ['.routes/*.js']
-    apis: ["src/controllers/*.js"]
+    apis: ["./src/controllers/pessoaController.js"]
   };
   
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use('/', routes);
 
 app.listen(port, () => {
     console.log(`app running on port ${port}`);
