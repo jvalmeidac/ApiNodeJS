@@ -5,6 +5,7 @@ const controller = require('../controllers/pessoaController')
 const router = (app) => {
     app.get('/', controller.get);
     app.post('/', controller.post);
+    //app.get('/:pessoaID', controller.getID);
     app.delete('/:pessoaID', controller.delete);
     app.put('/:pessoaID', controller.put);
 }

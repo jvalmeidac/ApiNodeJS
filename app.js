@@ -13,21 +13,24 @@ const port = process.env.PORT || 3333;
 
 routes(app);
 
-// const swaggerOptions = {
-//     swaggerDefinition: {
-//         info:{
-//             title: "Api de Pessoas",
-//             description: "Documentação da API",
-//             contact: {
-//                 name: "João Victor Almeida Costa"
-//             },
-//             apis: ["./src/controllers/*.js"]
-//         },
-//     },
-// };
+const swaggerOptions = {
+    swaggerDefinition: {
+      info: {
+        title: "API de Pessoas",
+        description: "Documentação da API",
+        contact: {
+          name: "João Victor Almeida Costa"
+        },
+        servers: ["http://localhost:3333"]
+      }
+    },
+    // ['.routes/*.js']
+    apis: ["src/controllers/*.js"]
+  };
+  
 
-// const swaggerDocs = swaggerJsDoc(swaggerOptions);
-// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.listen(port, () => {
     console.log(`app running on port ${port}`);
