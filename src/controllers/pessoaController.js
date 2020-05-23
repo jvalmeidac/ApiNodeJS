@@ -1,6 +1,7 @@
-const { v4: uuidv4 } = require('uuid');
-const pessoaDB = require('../data/PessoasDB.json')
+const { v4: uuidv4 } = require("uuid");
+const pessoaDB = require("../data/PessoasDB.json");
 
+const controller = {};
 // Routes
 /**
  * @swagger
@@ -11,10 +12,9 @@ const pessoaDB = require('../data/PessoasDB.json')
  *      '200':
  *        description: A successful response
  */
-exports.get = (req, res) => {
-    res.status(200).json(pessoaDB);
-}
-
+controller.get = (req, res) => {
+  res.status(200).json(pessoaDB);
+};
 
 /**
  * @swagger
@@ -25,11 +25,11 @@ exports.get = (req, res) => {
  *      '200':
  *        description: A successful response
  */
-exports.getID = (req, res) => {
-    const { pessoaID } = req.params;
-    const pessoa = pessoaDB.Pessoas.dados.find(p => p.ID == pessoaID);
-    res.status(200).json(pessoa);
-}
+controller.getID = (req, res) => {
+  const { pessoaID } = req.params;
+  const pessoa = pessoaDB.Pessoas.dados.find((p) => p.ID == pessoaID);
+  res.status(200).json(pessoa);
+};
 
 /**
  * @swagger
@@ -40,14 +40,14 @@ exports.getID = (req, res) => {
  *      '201':
  *        description: A successful response
  */
-exports.post = (req, res) => {
-    pessoaDB.Pessoas.dados.push({
-        ID: uuidv4(),
-        Nome: req.body.Nome,
-        Idade: req.body.Idade
-    });
-    res.status(201).json(pessoaDB);
-}
+controller.post = (req, res) => {
+  pessoaDB.Pessoas.dados.push({
+    ID: uuidv4(),
+    Nome: req.body.Nome,
+    Idade: req.body.Idade,
+  });
+  res.status(201).json(pessoaDB);
+};
 
 /**
  * @swagger
@@ -65,21 +65,21 @@ exports.post = (req, res) => {
  *          type: string
  *          format: string
  */
-exports.delete = (req, res) => {
-    const { pessoaID } = req.params;
+controller.delete = (req, res) => {
+  const { pessoaID } = req.params;
 
-    const getById = pessoaDB.Pessoas.dados.findIndex(p => p.ID == pessoaID);
-    if (pessoaID === -1) {
-        res.status(404).json({
-            message: "Pessoa não encontrada!",
-            success: false,
-            pessoas: pessoaDB.Pessoas
-        })
-    } else {
-        pessoaDB.Pessoas.dados.splice(getById, 1);
-        res.status(200).json(pessoaDB)
-    }
-}
+  const getById = pessoaDB.Pessoas.dados.findIndex((p) => p.ID == pessoaID);
+  if (pessoaID === -1) {
+    res.status(404).json({
+      message: "Pessoa não encontrada!",
+      success: false,
+      pessoas: pessoaDB.Pessoas,
+    });
+  } else {
+    pessoaDB.Pessoas.dados.splice(getById, 1);
+    res.status(200).json(pessoaDB);
+  }
+};
 
 /**
  * @swagger
@@ -96,26 +96,28 @@ exports.delete = (req, res) => {
  *    responses:
  *      '200':
  *          description: A success response
- * 
+ *
  */
-exports.put = (req, res) => {
-    const { pessoaID } = req.params;
+controller.put = (req, res) => {
+  const { pessoaID } = req.params;
 
-    const getById = pessoaDB.Pessoas.dados.findIndex(p => p.ID == pessoaID);
-    if (pessoaID === -1) {
-        res.status(404).json({
-            message: "Pessoa não encontrada!",
-            success: false,
-            pessoas: pessoaDB.Pessoas
-        })
-    } else {
-        const newPessoa = {
-            ID: pessoaID,
-            Nome: req.body.Nome,
-            Idade: req.body.Idade
-        }
-        pessoaDB.Pessoas.dados.splice(getById, 1, newPessoa);
+  const getById = pessoaDB.Pessoas.dados.findIndex((p) => p.ID == pessoaID);
+  if (pessoaID === -1) {
+    res.status(404).json({
+      message: "Pessoa não encontrada!",
+      success: false,
+      pessoas: pessoaDB.Pessoas,
+    });
+  } else {
+    const newPessoa = {
+      ID: pessoaID,
+      Nome: req.body.Nome,
+      Idade: req.body.Idade,
+    };
+    pessoaDB.Pessoas.dados.splice(getById, 1, newPessoa);
 
-        res.status(200).json(pessoaDB);
-    }
-}
+    res.status(200).json(pessoaDB);
+  }
+};
+
+module.exports = controller;

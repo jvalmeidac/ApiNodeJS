@@ -1,21 +1,21 @@
 {
-    "Pessoas":{
-        "dados": [
-            {
-                "ID": "59112a94-98f3-40cf-9475-abb7a51dfc64",
-                "Nome": "Pedro",
-                "Idade": 20
-            },
-            {
-                "ID": "09c07046-c969-4fc6-89d6-0eb8e283377a",
-                "Nome": "Carlos",
-                "Idade": 25
-            },
-            {
-                "ID": "3667deda-0fa7-4b7a-be0c-47474b79f441",
-                "Nome": "Maria",
-                "Idade": 18
-            }
-        ]
-    }
+  "Pessoas": {
+    "dados": [
+      {
+        "ID": "59112a94-98f3-40cf-9475-abb7a51dfc64",
+        "Nome": "Pedro",
+        "Idade": 20
+      },
+      {
+        "ID": "09c07046-c969-4fc6-89d6-0eb8e283377a",
+        "Nome": "Carlos",
+        "Idade": 25
+      },
+      {
+        "ID": "3667deda-0fa7-4b7a-be0c-47474b79f441",
+        "Nome": "Maria",
+        "Idade": 18
+      }
+    ]
+  }
 }
