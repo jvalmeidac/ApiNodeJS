@@ -18,8 +18,8 @@ api.login = (req, res) => {
   res.status(500).send("Invalid Login!");
 };
 
-api.logout = (req, res) => {
-  res.status(200).send({ auth: false, token: null });
-};
+// api.logout = (req, res) => {
+//   res.status(200).send({ auth: false, token: null });
+// };
 
 module.exports = api;

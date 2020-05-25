@@ -8,7 +8,7 @@ const router = express.Router();
 
 //Verificar Token
 function verifyJwt(req, res, next) {
-  var token = req.headers["x-access-token"];
+  let token = req.headers["x-access-token"];
   if (!token)
     return res.status(401).send({ auth: false, message: "No token provided!" });
   jwt.verify(token, process.env.SECRET, (err, decoded) => {
@@ -30,6 +30,6 @@ router.put("/:pessoaID", verifyJwt, pessoa.put);
 
 //Autenticação
 router.post("/login", auth.login);
-router.get("/logout", auth.logout);
+// router.get("/logout", auth.logout);
 
 module.exports = router;
