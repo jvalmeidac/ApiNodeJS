@@ -39,6 +39,13 @@ controller.getID = (req, res) => {
  *    responses:
  *      '201':
  *        description: A successful response
+ *    parameters:
+ *      - name: id
+ *        in: path
+ *        required: true
+ *        schema:
+ *          type: string
+ *          format: string
  */
 controller.post = (req, res) => {
   pessoaDB.Pessoas.dados.push({
